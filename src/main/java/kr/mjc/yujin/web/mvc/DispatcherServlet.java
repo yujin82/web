@@ -17,6 +17,7 @@ public class DispatcherServlet extends HttpServlet {
 
   @Autowired
   UserController userController;
+  ArticleController articleController;
 
   @Override
   protected void service(HttpServletRequest request,
@@ -31,6 +32,11 @@ public class DispatcherServlet extends HttpServlet {
       case "/mvc/user/userInfo" -> userController.userInfo(request, response);
       case "/mvc/user/addUser" -> userController.addUser(request, response);
       case "/mvc/user/login" -> userController.login(request, response);
+      case "/mvc/article/articleList" -> articleController.articleList(request,response);
+      case "/mvc/article/addArticle" -> articleController.addArticle(request,response);
+      case "/mvc/article/getArticle" -> articleController.getArticle(request,response);
+      case "/mvc/article/articleForm" -> articleController.articleForm(request,response);
+      case "/mvc/article/modifyArticle" -> articleController.stateArticle(request,response);
       default -> response.sendError(HttpServletResponse.SC_NOT_FOUND);
     }
   }
